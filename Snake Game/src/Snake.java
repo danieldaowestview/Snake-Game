@@ -5,7 +5,9 @@ public class Snake {
 	private boolean alive;
 	private int x;
 	private int y;
-	private int move;
+	private int move; // direction of move, 1 - north, 2 - south, 3 - east, 4 - west
+	private int vx;
+	private int vy;
 
 	public int getX() {
 		return this.x;
@@ -39,8 +41,10 @@ public class Snake {
 		y = (int) (Math.random() * (400 - 100 + 1)) + 100;// randomize it between [100 400]
 		this.alive = true;
 		this.move = 1;
-		width = 3;
+		width = 50;
 		color = new Color(0, 0, 0);
+		this.vx = 10;
+		this.vy = 10;
 
 	}
 }
