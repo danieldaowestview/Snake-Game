@@ -43,4 +43,8 @@ public class Snake {
 		color = new Color(0, 0, 0);
 
 	}
+	
+	public void paint(Graphics g) {
+		
+	}
 }
