@@ -60,6 +60,9 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		JFrame f = new JFrame("Snake");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(800, 600);
+		f.add(this);
+		f.addKeyListener(this);
+		f.setVisible(true);
 	}
 	
 	
