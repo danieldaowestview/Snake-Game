@@ -37,8 +37,8 @@ public class Snake {
 	// assigns values to the instance variable
 	public Snake() { // the default constructor is the one w/o parameters
 
-		x = (int) (Math.random() * (600 - 100 + 1)) + 100; // [100 600] randomize it
-		y = (int) (Math.random() * (400 - 100 + 1)) + 100;// randomize it between [100 400]
+		this.x = (int) (Math.random() * (600 - 100 + 1)) + 100; // [100 600] randomize it
+		this.y = (int) (Math.random() * (400 - 100 + 1)) + 100;// randomize it between [100 400]
 		this.alive = true;
 		this.move = 1;
 		width = 50;
