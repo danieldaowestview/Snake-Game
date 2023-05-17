@@ -5,7 +5,9 @@ public class Snake {
 	private boolean alive;
 	private int x;
 	private int y;
-	private int move;
+	private int move; // direction of move, 1 - north, 2 - south, 3 - east, 4 - west
+	private int vx;
+	private int vy;
 
 	public int getX() {
 		return this.x;
@@ -35,12 +37,14 @@ public class Snake {
 	// assigns values to the instance variable
 	public Snake() { // the default constructor is the one w/o parameters
 
-		x = (int) (Math.random() * (600 - 100 + 1)) + 100; // [100 600] randomize it
-		y = (int) (Math.random() * (400 - 100 + 1)) + 100;// randomize it between [100 400]
+		this.x = (int) (Math.random() * (600 - 100 + 1)) + 100; // [100 600] randomize it
+		this.y = (int) (Math.random() * (400 - 100 + 1)) + 100;// randomize it between [100 400]
 		this.alive = true;
 		this.move = 1;
-		width = 3;
+		width = 50;
 		color = new Color(0, 0, 0);
+		this.vx = 10;
+		this.vy = 10;
 
 	}
 	
