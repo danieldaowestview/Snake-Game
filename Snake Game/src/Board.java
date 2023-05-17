@@ -18,7 +18,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		//food.paint(g) gotta paint the apple
 		
 		
-		
+		//
 		
 		
 		
@@ -39,6 +39,8 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
+		//bing bong bing bong
+		
 		
 	}
 
@@ -46,6 +48,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		//tihis is a comment
 		
 	}
 
@@ -63,6 +66,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		f.add(this);
 		f.addKeyListener(this);
 		f.setVisible(true);
+		
 	}
 	
 	
