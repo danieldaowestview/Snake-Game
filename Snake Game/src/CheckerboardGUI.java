@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CheckerboardGUI extends JFrame {
-    private static final int BOARD_SIZE = 8;  // Number of squares per row and column
+    private static final int BOARD_SIZE = 16;  // Number of squares per row and column
     private static final int SQUARE_SIZE = 60;  // Size of each square in pixels
 
     public CheckerboardGUI() {

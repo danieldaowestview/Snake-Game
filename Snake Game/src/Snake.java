@@ -36,14 +36,13 @@ public class Snake {
 	// # - parts of a class - constructor
 	// helps with creation of class
 	// assigns values to the instance variable
-	public Snake() { // the default constructor is the one w/o parameters
+	public Snake(int x, int y) { // the default constructor is the one w/o parameters
 
-		this.x = (int) (Math.random() * (600 - 100 + 1)) + 100; // [100 600] randomize it
-		this.y = (int) (Math.random() * (400 - 100 + 1)) + 100;// randomize it between [100 400]
-		this.alive = true;
+		this.x =  x;
+		this.y = y;
 		this.move = 1;
 		width = 50;
-		color = new Color(0, 0, 0);
+		color = new Color(124,252,0);
 		this.vx = 10;
 		this.vy = 10;
 
