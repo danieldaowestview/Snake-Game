@@ -48,11 +48,12 @@ public class Snake {
 
 		this.x = x;
 		this.y = y;
-		this.move = 1;
+		this.setMove(1);
 		width = 50;
 		color = new Color(124, 252, 0);
 		this.vx = 0;
 		this.vy = 7;
+		alive = true;
 
 	}
 
@@ -60,6 +61,22 @@ public class Snake {
 		g.fillRect(x, y, width, width);
 		x += vx;
 		y += vy;
+	}
+
+	public int getMove() {
+		return move;
+	}
+
+	public void setMove(int move) {
+		this.move = move;
+	}
+
+	public boolean isAlive() {
+		return alive;
+	}
+
+	public void setAlive(boolean alive) {
+		this.alive = alive;
 	}
 	
 

@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -18,21 +19,41 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		// food.paint(g) gotta paint the apple
-
+		Font font = new Font("Monospaced", Font.BOLD, 90);
+		g.setFont(font);
+		g.drawString(0 + " ", 200, 100);
 		snake.paint(g);
-		if(collisionWithBoard() == true) {
+		if (collisionWithBoard() == true) {
 			snake.setX(300);
 			snake.setY(300);
+			snake.setAlive(false);
+
 		}
+		if (!snake.isAlive()) {
+			snake.setVx(0);
+			snake.setVy(0);
+			g.drawString("YOU DIED" + "\n" + "Press O to Play AGAIN", 0, 400);
+		} else {
+			snake.setVy(7);
+		}
+
 		//
 
 	}
-	
+
 	public boolean collisionWithBoard() {
-		if(snake.getX() > width || snake.getX() < 0) {
+		if (snake.getMove() == 4) { // if moving right
+			if (snake.getX() + 50 > width) {
+				return true;
+			}
+		} else if (snake.getX() > width || snake.getX() < 0) {
 			return true;
-		} 
-		if(snake.getY() > height || snake.getY() < 0) {
+		}
+		if (snake.getMove() == 2) { // if moving down
+			if (snake.getY() +50  > height) {
+				return true;
+			}
+		} else if (snake.getY() + 50 > height || snake.getY() < 0) {
 			return true;
 		}
 		return false;
@@ -71,27 +92,34 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 			System.out.println(87);
 			snake.setVx(0);
 			snake.setVy(-7);
+			snake.setMove(1);
 			break; // prevents bleeding into other cases
 
 		case 83: // down
 			System.out.println(83);
 			snake.setVx(0);
 			snake.setVy(7);
+			snake.setMove(2);
 			break;
-		case 39:
-			System.out.println(39);
-			snake.setVx(23);
+
 		case 65: // left
 			// logic if this case is met
 			System.out.println(65);
 			snake.setVx(-7);
 			snake.setVy(0);
+			snake.setMove(3);
 			break; // prevents bleeding into other cases
 
 		case 68: // right
 			System.out.println(68);
 			snake.setVx(7);
 			snake.setVy(0);
+			snake.setMove(4);
+			break;
+
+		case 79: // reset the game
+			System.out.println(79);
+			snake.setAlive(true);
 			break;
 		}
 
