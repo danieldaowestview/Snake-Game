@@ -18,7 +18,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		// food.paint(g) gotta paint the apple
-		
+
 		snake.paint(g);
 
 		//
@@ -33,7 +33,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
+		repaint();
 	}
 
 	@Override
@@ -44,9 +44,41 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		// tihis is a comment
+	public void keyPressed(KeyEvent key) {
+		// Information about the key that is pressed
+		// lives in the KeyEvent object called arg0
+		System.out.println(key.getKeyCode());
+		// 87 IS THE w key
+
+		// Switch statements
+		switch (key.getKeyCode()) {
+
+		case 87: // up
+			// logic if this case is met
+			System.out.println(87);
+			snake.setVx(0);
+			snake.setVy(-7);
+			break; // prevents bleeding into other cases
+
+		case 83: // down
+			System.out.println(83);
+			snake.setVx(0);
+			snake.setVy(7);
+			break;
+
+		case 65: // left
+			// logic if this case is met
+			System.out.println(65);
+			snake.setVx(-7);
+			snake.setVy(0);
+			break; // prevents bleeding into other cases
+
+		case 68: // right
+			System.out.println(68);
+			snake.setVx(7);
+			snake.setVy(0);
+			break;
+		}
 
 	}
 
