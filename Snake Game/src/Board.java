@@ -20,9 +20,22 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		// food.paint(g) gotta paint the apple
 
 		snake.paint(g);
-
+		if(collisionWithBoard() == true) {
+			snake.setX(300);
+			snake.setY(300);
+		}
 		//
 
+	}
+	
+	public boolean collisionWithBoard() {
+		if(snake.getX() > width || snake.getX() < 0) {
+			return true;
+		} 
+		if(snake.getY() > height || snake.getY() < 0) {
+			return true;
+		}
+		return false;
 	}
 
 	public static void main(String[] arg) {

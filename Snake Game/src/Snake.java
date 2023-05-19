@@ -62,4 +62,5 @@ public class Snake {
 		y += vy;
 	}
 	
+
 }
