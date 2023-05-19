@@ -51,8 +51,8 @@ public class Snake {
 		this.move = 1;
 		width = 50;
 		color = new Color(124, 252, 0);
-		this.vx = 10;
-		this.vy = 10;
+		this.vx = 0;
+		this.vy = 7;
 
 	}
 

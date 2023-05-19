@@ -27,7 +27,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 
 	public static void main(String[] arg) {
 		new Board();
-		new Snake(400, 400);
+		new Snake(300, 300);
 	}
 
 	@Override
