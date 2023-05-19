@@ -65,7 +65,6 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 			snake.setVx(0);
 			snake.setVy(7);
 			break;
- //kpmkojjoiomjninjjinijnjiijninjijnjin
 		case 39:
 			System.out.println(39);
 			snake.setVx(23);
