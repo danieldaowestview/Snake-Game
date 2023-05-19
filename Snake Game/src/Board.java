@@ -10,8 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Board extends JPanel implements KeyListener, ActionListener {
-	private int height;
-	private int width;
+	private int height = 800;
+	private int width = 800;
 
 	Snake snake = new Snake(400, 400);
 
@@ -108,7 +108,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	public Board() {
 		JFrame f = new JFrame("Snake");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(800, 600);
+		f.setSize(width, height);
 		f.add(this);
 		f.addKeyListener(this);
 		t = new Timer(16, this);
