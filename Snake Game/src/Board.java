@@ -19,7 +19,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		// food.paint(g) gotta paint the apple
-		Font font = new Font("Monospaced", Font.BOLD, 90);
+		Font font = new Font("Monospaced", Font.BOLD, 50);
 		g.setFont(font);
 		g.drawString(0 + " ", 200, 100);
 		snake.paint(g);
@@ -27,15 +27,16 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 			snake.setX(300);
 			snake.setY(300);
 			snake.setAlive(false);
+			snake.setVx(0);
+			snake.setVy(0);
 
 		}
 		if (!snake.isAlive()) {
 			snake.setVx(0);
 			snake.setVy(0);
-			g.drawString("YOU DIED" + "\n" + "Press O to Play AGAIN", 0, 400);
-		} else {
-			snake.setVy(7);
-		}
+			g.drawString("YOU DIED", 0, 400);
+			g.drawString("Press O to Play AGAIN", 0, 600);
+		} 
 
 		//
 
@@ -62,6 +63,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	public static void main(String[] arg) {
 		new Board();
 		new Snake(300, 300);
+		//if()
 	}
 
 	@Override
@@ -145,3 +147,4 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	}
 
 }
+
