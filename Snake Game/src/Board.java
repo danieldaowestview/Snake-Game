@@ -1,6 +1,7 @@
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -15,14 +16,16 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	private int width = 800;
 
 	Snake snake = new Snake(400, 400);
+	Food food = new Food(500, 500);
 
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		// food.paint(g) gotta paint the apple
 		Font font = new Font("Monospaced", Font.BOLD, 50);
 		g.setFont(font);
-		g.drawString(0 + " ", 200, 100);
+		g.drawString("Score:" + snake.getScore() , 200, 100);
 		snake.paint(g);
+		food.paint(g);
 		if (collisionWithBoard() == true) {
 			snake.setX(300);
 			snake.setY(300);
@@ -36,9 +39,19 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 			snake.setVy(0);
 			g.drawString("YOU DIED", 0, 400);
 			g.drawString("Press O to Play AGAIN", 0, 600);
-		} 
+		}
+		Rectangle snakebox = new Rectangle(snake.getX(), snake.getY(), snake.getWidth(), snake.getWidth());
+		Rectangle foodbox = new Rectangle(food.getX(), food.getY(), food.getWidth(), food.getWidth());
 
-		//
+		if (foodbox.intersects(snakebox)) {
+			food.newCoord();
+			snake.score();
+			System.out.println("Food X:" + this.getX());
+			System.out.println("Food Y:" + this.getY());
+		}
+		//if (food.isEaten()) {
+		//	food.newCoord();
+		//}
 
 	}
 
@@ -51,7 +64,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 			return true;
 		}
 		if (snake.getMove() == 2) { // if moving down
-			if (snake.getY() +50  > height) {
+			if (snake.getY() + 50 > height) {
 				return true;
 			}
 		} else if (snake.getY() + 50 > height || snake.getY() < 0) {
@@ -63,7 +76,9 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	public static void main(String[] arg) {
 		new Board();
 		new Snake(300, 300);
-		//if()
+		// if()
+		//CheckerboardGUI check = new CheckerboardGUI();
+		
 	}
 
 	@Override
