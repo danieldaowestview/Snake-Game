@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class Snake {
 	private boolean alive;
@@ -8,6 +9,8 @@ public class Snake {
 	private int move; // direction of move, 1 - north, 2 - south, 3 - east, 4 - west
 	private int vx;
 	private int vy;
+	private ArrayList growth;
+	private int score;
 
 	public int getX() {
 		return this.x;
@@ -24,7 +27,7 @@ public class Snake {
 	public void setX(int pX) {
 		this.x = pX;
 	}
-	
+
 	public void setVy(int pVY) {
 		this.vy = pVY;
 	}
@@ -54,7 +57,8 @@ public class Snake {
 		this.vx = 0;
 		this.vy = 7;
 		alive = true;
-
+		ArrayList growth = new ArrayList();
+		this.score = score;
 	}
 
 	public void paint(Graphics g) {
@@ -78,6 +82,28 @@ public class Snake {
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
+
+	public int getWidth() {
+		// TODO Auto-generated method stub
+		return this.width;
+	}
+
+	public int getHeight() {
+		// TODO Auto-generated method stub
+		return this.height;
+	}
 	
+	public void grow() {
+		//growth.add
+	}
+
+	public int getScore() {
+		// TODO Auto-generated method stub
+		return score;
+	}
+	
+	public void score() {
+		score++;
+	}
 
 }
