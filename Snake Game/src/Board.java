@@ -17,6 +17,11 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 
 	Snake snake = new Snake(400, 400);
 	Food food = new Food(500, 500);
+	
+	Wall wall = new Wall((int)(Math.random()*300),(int)(Math.random()*300));
+	Wall wall1 = new Wall((int)(Math.random()*300)+300,(int)(Math.random()*300));
+	Wall wall2 = new Wall((int)(Math.random()*300)+300,(int)(Math.random()*300));
+	Wall wall3 = new Wall((int)(Math.random()*300) ,(int)(Math.random()*300) +300);
 
 	public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -26,6 +31,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		g.drawString("Score:" + snake.getScore() , 200, 100);
 		snake.paint(g);
 		food.paint(g);
+		wall.paint(g);
+		wall1.paint(g);
+		wall2.paint(g);
+		wall3.paint(g);
 		if (collisionWithBoard() == true) {
 			snake.setX(300);
 			snake.setY(300);
@@ -42,7 +51,11 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		}
 		Rectangle snakebox = new Rectangle(snake.getX(), snake.getY(), snake.getWidth(), snake.getWidth());
 		Rectangle foodbox = new Rectangle(food.getX(), food.getY(), food.getWidth(), food.getWidth());
-
+		Rectangle wallbox = new Rectangle(wall.getX(), wall.getY (), wall.getWidth(), wall.getWidth());
+		Rectangle wallbox1 = new Rectangle(wall1.getX(), wall1.getY (), wall1.getWidth(), wall1.getWidth());
+		Rectangle wallbox2 = new Rectangle(wall2.getX(), wall2.getY (), wall2.getWidth(), wall2.getWidth());
+		Rectangle wallbox3 = new Rectangle(wall3.getX(), wall3.getY (), wall3.getWidth(), wall3.getWidth());
+		
 		if (foodbox.intersects(snakebox)) {
 			food.newCoord();
 			snake.score();
@@ -52,6 +65,12 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		//if (food.isEaten()) {
 		//	food.newCoord();
 		//}
+		if(snakebox.intersects(wallbox) || snakebox.intersects(wallbox1)|| snakebox.intersects(wallbox2)|| snakebox.intersects(wallbox3) ) {
+			snake.setVx(0);
+			snake.setVy(0);
+			g.drawString("YOU DIED", 0, 400);
+			g.drawString("Press O to Play AGAIN", 0, 600);
+		}
 
 	}
 
