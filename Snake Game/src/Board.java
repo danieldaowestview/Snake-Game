@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
 import javax.swing.Timer;
 
 import javax.swing.JFrame;
@@ -14,27 +16,21 @@ import javax.swing.JPanel;
 public class Board extends JPanel implements KeyListener, ActionListener {
 	private int height = 800;
 	private int width = 800;
-
 	Snake snake = new Snake(400, 400);
 	Food food = new Food(500, 500);
-	
-	Wall wall = new Wall((int)(Math.random()*300),(int)(Math.random()*300));
-	Wall wall1 = new Wall((int)(Math.random()*300)+300,(int)(Math.random()*300));
-	Wall wall2 = new Wall((int)(Math.random()*300)+300,(int)(Math.random()*300));
-	Wall wall3 = new Wall((int)(Math.random()*300) ,(int)(Math.random()*300) +300);
+	ArrayList<Snake> parts = new ArrayList<Snake>();
 
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		// food.paint(g) gotta paint the apple
+		if(parts.isEmpty()) {
+			parts.add(snake);
+		}
 		Font font = new Font("Monospaced", Font.BOLD, 50);
 		g.setFont(font);
-		g.drawString("Score:" + snake.getScore() , 200, 100);
+		g.drawString("Score:" + snake.getScore(), 200, 100);
 		snake.paint(g);
 		food.paint(g);
-		wall.paint(g);
-		wall1.paint(g);
-		wall2.paint(g);
-		wall3.paint(g);
 		if (collisionWithBoard() == true) {
 			snake.setX(300);
 			snake.setY(300);
@@ -46,30 +42,44 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		if (!snake.isAlive()) {
 			snake.setVx(0);
 			snake.setVy(0);
+			snake.setScore(0);
 			g.drawString("YOU DIED", 0, 400);
 			g.drawString("Press O to Play AGAIN", 0, 600);
 		}
 		Rectangle snakebox = new Rectangle(snake.getX(), snake.getY(), snake.getWidth(), snake.getWidth());
 		Rectangle foodbox = new Rectangle(food.getX(), food.getY(), food.getWidth(), food.getWidth());
-		Rectangle wallbox = new Rectangle(wall.getX(), wall.getY (), wall.getWidth(), wall.getWidth());
-		Rectangle wallbox1 = new Rectangle(wall1.getX(), wall1.getY (), wall1.getWidth(), wall1.getWidth());
-		Rectangle wallbox2 = new Rectangle(wall2.getX(), wall2.getY (), wall2.getWidth(), wall2.getWidth());
-		Rectangle wallbox3 = new Rectangle(wall3.getX(), wall3.getY (), wall3.getWidth(), wall3.getWidth());
-		
+
 		if (foodbox.intersects(snakebox)) {
 			food.newCoord();
 			snake.score();
 			System.out.println("Food X:" + this.getX());
 			System.out.println("Food Y:" + this.getY());
+			if(snake.getMove() == 1) { // adds part based on direction of head of snake
+				Snake k = new Snake(parts.get(parts.size() - 1).getX(), parts.get(parts.size() - 1).getY() + snake.getHeight());
+				parts.add(k);
+			}
+			if(snake.getMove() == 2) {
+				Snake k = new Snake(parts.get(parts.size() - 1).getX(), parts.get(parts.size() - 1).getY() - snake.getHeight());
+				parts.add(k);
+			}
+			if(snake.getMove() == 3) {
+				Snake k = new Snake(parts.get(parts.size() - 1).getX() + snake.getWidth(), parts.get(parts.size() - 1).getY());
+				parts.add(k);
+			}
+			if(snake.getMove() == 4) {
+				Snake k = new Snake(parts.get(parts.size() - 1).getX() - snake.getWidth(), parts.get(parts.size() - 1).getY());
+				parts.add(k);
+			}
+			
+			
+
 		}
-		//if (food.isEaten()) {
-		//	food.newCoord();
-		//}
-		if(snakebox.intersects(wallbox) || snakebox.intersects(wallbox1)|| snakebox.intersects(wallbox2)|| snakebox.intersects(wallbox3) ) {
-			snake.setVx(0);
-			snake.setVy(0);
-			g.drawString("YOU DIED", 0, 400);
-			g.drawString("Press O to Play AGAIN", 0, 600);
+		for (int i = 1; i < parts.size(); i++) { // paints each part of snake
+			Snake s = parts.get(i);
+			s.paint(g);
+			g.fillRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
+			s.setVx(parts.get(i - 1).getVx());
+			s.setVy(parts.get(i - 1).getVy());
 		}
 
 	}
@@ -94,10 +104,9 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 
 	public static void main(String[] arg) {
 		new Board();
-		new Snake(300, 300);
+		new Snake(400, 400);
 		// if()
-		//CheckerboardGUI check = new CheckerboardGUI();
-		
+		// CheckerboardGUI check = new CheckerboardGUI();
 	}
 
 	@Override
@@ -181,4 +190,3 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	}
 
 }
-
