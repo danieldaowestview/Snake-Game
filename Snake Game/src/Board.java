@@ -18,6 +18,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	private int width = 800;
 	Snake snake = new Snake(400, 400);
 	Food food = new Food(500, 500);
+	Wall wall = new Wall((int)(Math.random()*300),(int)(Math.random()*300));
+	Wall wall1 = new Wall((int)(Math.random()*300)+300,(int)(Math.random()*300));
+	Wall wall2 = new Wall((int)(Math.random()*300)+300,(int)(Math.random()*300));
+	Wall wall3 = new Wall((int)(Math.random()*300) ,(int)(Math.random()*300) +300);
 	ArrayList<Snake> parts = new ArrayList<Snake>();
 
 	public void paint(Graphics g) {
