@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Snake {
 	private boolean alive;
@@ -11,7 +13,9 @@ public class Snake {
 	private int vy;
 	private ArrayList growth;
 	private int score;
-
+	private List<int[]> coordslist;
+	private int[] coords;
+	
 	public int getX() {
 		return this.x;
 	}
@@ -55,10 +59,15 @@ public class Snake {
 		width = 50;
 		color = new Color(124, 252, 0);
 		this.vx = 0;
-		this.vy = 7;
+		this.vy = 0;
 		alive = true;
 		ArrayList growth = new ArrayList();
 		this.score = score;
+		ArrayList<Integer> coordslist = new ArrayList<Integer>();
+//		int[] coords = new int[]; 
+//		coords[0] = this.x;
+//		coords[1] = this.y;
+	//	coordslist.add(coords);
 	}
 
 	public void paint(Graphics g) {
@@ -92,18 +101,43 @@ public class Snake {
 		// TODO Auto-generated method stub
 		return this.height;
 	}
-	
+
 	public void grow() {
-		//growth.add
+		// growth.add
 	}
 
 	public int getScore() {
 		// TODO Auto-generated method stub
 		return score;
 	}
-	
+
+	public void setScore(int pScore) {
+		score = pScore;
+	}
+
 	public void score() {
 		score++;
 	}
+	
+	public int[] getCoords() {
+		int[] coords = new int[2];
+		coords[0] = this.x;
+		coords[1] = this.y;
+		return coords;
+	}
+	//public void keepTrack(int[] ){
+
+	public int getVx() {
+		// TODO Auto-generated method stub
+		return this.vx;
+	}
+	
+	public int getVy() {
+		// TODO Auto-generated method stub
+		return this.vy;
+	}
+		
+	//	coords.add(null)
+	//}
 
 }
