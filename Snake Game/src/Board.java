@@ -20,7 +20,11 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	private LinkedList<Snake> parts;
 //    private int vx = 0; // horizontal velocity
 //    private int vy = 0; // vertical velocity
-
+	Wall wall = new Wall((int) (Math.random() * 100), (int) (Math.random() * 100));
+	Wall wall1 = new Wall((int) (Math.random() * 100) + 400, (int) (Math.random() * 100) + 500);
+	Wall wall2 = new Wall((int) (Math.random() * 100) + 300, (int) (Math.random() * 100));
+	Wall wall3 = new Wall((int) (Math.random() * 200), (int) (Math.random() * 100) + 500);
+	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		// food.paint(g) gotta paint the apple
@@ -34,10 +38,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 			parts = new LinkedList<>();
 			parts.add(snake);
 		}
-		Wall wall = new Wall((int) (Math.random() * 10), (int) (Math.random() * 10));
-		Wall wall1 = new Wall((int) (Math.random() * 10) + 300, (int) (Math.random() * 10) + 300);
-		Wall wall2 = new Wall((int) (Math.random() * 10) + 300, (int) (Math.random() * 10));
-		Wall wall3 = new Wall((int) (Math.random() * 10), (int) (Math.random() * 10) + 300);
+//		Wall wall = new Wall((int) (Math.random() * 100), (int) (Math.random() * 100));
+//		Wall wall1 = new Wall((int) (Math.random() * 100) + 400, (int) (Math.random() * 100) + 500);
+//		Wall wall2 = new Wall((int) (Math.random() * 100) + 300, (int) (Math.random() * 100));
+//		Wall wall3 = new Wall((int) (Math.random() * 200), (int) (Math.random() * 100) + 500);
 
 		Font font = new Font("Monospaced", Font.BOLD, 50);
 		g.setFont(font);
@@ -78,7 +82,13 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 			g.drawString("YOU DIED", 0, 400);
 			g.drawString("Press O to Play AGAIN", 0, 600);
 		}
-
+//		if((wall.getX() == food.getX()) || (wall1.getX() == food.getX()) || (wall2.getX() == food.getX()) || (wall3.getX() == food.getX()) ) {
+//			food.newCoord();
+//		}
+		if (wallbox.intersects(foodbox) || wallbox1.intersects(foodbox) || wallbox2.intersects(foodbox)
+				|| wallbox3.intersects(foodbox)) {
+			food.newCoord();
+		}
 		if (foodbox.intersects(snakebox)) {
 			food.newCoord();
 			snake.score();
