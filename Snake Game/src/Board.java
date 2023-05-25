@@ -45,7 +45,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 
 		snake.paint(g);
 		food.paint(g);
-
+		wall.paint(g);
+		wall1.paint(g);
+		wall2.paint(g);
+		wall3.paint(g);
 		if (collisionWithBoard()) {
 			snake.setX(300);
 			snake.setY(300);
