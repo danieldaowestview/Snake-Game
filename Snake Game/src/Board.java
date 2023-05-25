@@ -34,6 +34,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 			parts = new LinkedList<>();
 			parts.add(snake);
 		}
+		Wall wall = new Wall((int) (Math.random() * 10), (int) (Math.random() * 10));
+		Wall wall1 = new Wall((int) (Math.random() * 10) + 300, (int) (Math.random() * 10) + 300);
+		Wall wall2 = new Wall((int) (Math.random() * 10) + 300, (int) (Math.random() * 10));
+		Wall wall3 = new Wall((int) (Math.random() * 10), (int) (Math.random() * 10) + 300);
 
 		Font font = new Font("Monospaced", Font.BOLD, 50);
 		g.setFont(font);
@@ -60,6 +64,17 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 
 		Rectangle snakebox = new Rectangle(snake.getX(), snake.getY(), snake.getWidth(), snake.getWidth());
 		Rectangle foodbox = new Rectangle(food.getX(), food.getY(), food.getWidth(), food.getWidth());
+		Rectangle wallbox = new Rectangle(wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
+		Rectangle wallbox1 = new Rectangle(wall1.getX(), wall1.getY(), wall1.getWidth(), wall1.getHeight());
+		Rectangle wallbox2 = new Rectangle(wall2.getX(), wall2.getY(), wall2.getWidth(), wall2.getHeight());
+		Rectangle wallbox3 = new Rectangle(wall3.getX(), wall3.getY(), wall3.getWidth(), wall3.getHeight());
+		if (wallbox.intersects(snakebox) || wallbox1.intersects(snakebox) || wallbox2.intersects(snakebox)
+				|| wallbox3.intersects(snakebox)) {
+			snake.setVx(0);
+			snake.setVy(0);
+			g.drawString("YOU DIED", 0, 400);
+			g.drawString("Press O to Play AGAIN", 0, 600);
+		}
 
 		if (foodbox.intersects(snakebox)) {
 			food.newCoord();
