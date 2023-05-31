@@ -144,8 +144,18 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		return false;
 	}
 
-	public static void main(String[] arg) {
+	public static void main(String[] arg) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		new Board();
+		Scanner scanner = new Scanner(System.in);
+		File file = new File("omfg-hello.wav");
+		AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+		Clip clip = AudioSystem.getClip();
+		clip.open(audioStream);
+		
+		clip.start();
+		
+		
+		
 	}
 
 	@Override
