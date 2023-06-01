@@ -62,8 +62,12 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		}
 
 		if (!snake.isAlive()) {
+			snake.setX(300);
+			snake.setY(300);
 			snake.setVx(0);
 			snake.setVy(0);
+			parts.clear();
+			hitboxes.clear();
 			snake.setScore(0);
 			g.drawString("YOU DIED", 0, 400);
 			g.drawString("Press O to Play AGAIN", 0, 600);
@@ -202,7 +206,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 			break;
 
 		case KeyEvent.VK_O: // reset the game
-			snake.setAlive(true);
+			resetGame();
 			break;
 		}
 	}
@@ -223,5 +227,15 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		t = new Timer(16, this);
 		t.start();
 		f.setVisible(true);
+	}
+
+	public void resetGame() {
+		snake = null;
+		food = null;
+		parts = null;
+		hitboxes = null;
+		t.stop();
+		t = new Timer(16, this);
+		t.start();
 	}
 }
