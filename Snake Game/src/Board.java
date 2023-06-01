@@ -7,6 +7,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.io.File;
+import java.io.IOException;
+import java.io.InvalidObjectException;
+import java.util.Scanner;
+import javax.sound.sampled.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
