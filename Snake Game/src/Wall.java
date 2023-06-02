@@ -12,9 +12,9 @@ public class Wall {
 		this.x = d;
 		this.y = e;
 		
-		this.width = 50; 
-		this.height = 50;
-		c = Color.BLUE;
+		this.width = (int)((Math.random()*100)); 
+		this.height = (int)((Math.random()*100));
+		c = Color.RED;
 		
 	}
 	public void setColor(Color c) {
@@ -36,5 +36,9 @@ public class Wall {
 	public int getY() {
 		// TODO Auto-generated method stub
 		return this.y;
+	}
+	public int getHeight() {
+		// TODO Auto-generated method stub
+		return this.height;
 	}
 }
