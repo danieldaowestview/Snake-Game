@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -50,11 +51,12 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 
 		Font font = new Font("Monospaced", Font.BOLD, 50);
 		g.setFont(font);
-		g.drawString("Score:" + snake.getScore(), 200, 100);
+		g.drawString("Score:" + snake.getScore(), 500, 100);
 
 		snake.paint(g);
 		food.paint(g);
 		wall.paint(g);
+		
 		wall1.paint(g);
 		wall2.paint(g);
 		wall3.paint(g);
@@ -72,10 +74,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 			snake.setVx(0);
 			snake.setVy(0);
 			parts.clear();
-			hitboxes.clear();
+			//hitboxes.clear();
 			snake.setScore(0);
-			g.drawString("YOU DIED", 0, 400);
-			g.drawString("Press O to Play AGAIN", 0, 600);
+			g.drawString("YOU DIED", 0, 300);
+			g.drawString("Press O to Play AGAIN", 0, 400);
 		}
 
 		Rectangle snakebox = new Rectangle(snake.getX(), snake.getY(), snake.getWidth(), snake.getWidth());
@@ -88,8 +90,8 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 				|| wallbox3.intersects(snakebox)) {
 			snake.setVx(0);
 			snake.setVy(0);
-			g.drawString("YOU DIED", 0, 400);
-			g.drawString("Press O to Play AGAIN", 0, 600);
+			g.drawString("YOU DIED", 0, 300);
+			g.drawString("Press O to Play AGAIN", 0, 400);
 		}
 //		if((wall.getX() == food.getX()) || (wall1.getX() == food.getX()) || (wall2.getX() == food.getX()) || (wall3.getX() == food.getX()) ) {
 //			food.newCoord();
@@ -248,7 +250,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 		snake = null;
 		food = null;
 		parts = null;
-		hitboxes = null;
+		//hitboxes = null;
 		t.stop();
 		t = new Timer(16, this);
 		t.start();
