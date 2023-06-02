@@ -199,27 +199,36 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 	public void keyPressed(KeyEvent key) {
 		switch (key.getKeyCode()) {
 		case KeyEvent.VK_W: // up
+			if(snake.getMove() != 2) {
 			snake.setVx(0);
 			snake.setVy(-7);
 			snake.setMove(1);
+			}
 			break;
 
 		case KeyEvent.VK_S: // down
+			if(snake.getMove() != 1) {
 			snake.setVx(0);
 			snake.setVy(7);
 			snake.setMove(2);
+			}
 			break;
 
 		case KeyEvent.VK_A: // left
+			if(snake.getMove() != 4) {
 			snake.setVx(-7);
 			snake.setVy(0);
 			snake.setMove(3);
+			}
 			break;
 
 		case KeyEvent.VK_D: // right
+			if(snake.getMove()!=3) {
 			snake.setVx(7);
 			snake.setVy(0);
 			snake.setMove(4);
+			}
+
 			break;
 
 		case KeyEvent.VK_O: // reset the game
