@@ -57,7 +57,7 @@ public class Snake {
 		this.y = y;
 		this.setMove(1);
 		width = 50;
-		color = new Color(124, 252, 0);
+		color = new Color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
 		this.vx = 0;
 		this.vy = 0;
 		alive = true;
@@ -74,6 +74,7 @@ public class Snake {
 		g.fillRect(x, y, width, width);
 		x += vx;
 		y += vy;
+		g.setColor(color);
 	}
 
 	public int getMove() {
