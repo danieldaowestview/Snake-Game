@@ -5,19 +5,28 @@ public class Food {
 	private int x, y;
 	boolean eaten;
 	int width;
-	private Color color;
+	private Color color1;
+	private Color set;
+
+	public Color getSet() {
+		return set;
+	}
+
+	public void setSet(Color set) {
+		this.set = set;
+	}
 
 	public Food(int pX, int pY) {
 		this.x = pX;
 		this.y = pY;
 		eaten = false;
 		this.width = 50;
-		color = new Color(123, 123, 123);
+		color1 = new Color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
 	}
 
 	public void paint(Graphics g) {
-		g.fillRect(x, y, width, width);
-		g.setColor(color);
+		g.fillOval(x, y, width, width);
+		g.setColor(color1);
 	}
 
 	public void newCoord() {
@@ -48,4 +57,3 @@ public class Food {
 	}
 
 }
-
