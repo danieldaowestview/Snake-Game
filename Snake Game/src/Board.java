@@ -157,11 +157,16 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 
 	public static void main(String[] arg) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		new Board();
-		File file = new File("omfg-hello.wav"); 
-		File file1 = new File("omfg-iloveyou.wav");
-		AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+		File one = new File("1"); //omfg hello = 1
+		File two = new File("2");
+		
+		ArrayList<File> list = new ArrayList<File>();
+		list.add(one);
+		list.add(two);
+		
+		AudioInputStream audioStream = AudioSystem.getAudioInputStream(list.get((int)(Math.random()*1)));
 		//AudioInputStream audioStream1 = AudioSystem.getAudioInputStream(file1);
-
+		
 		Clip clip = AudioSystem.getClip();
 		//Clip clip1 = AudioSystem.getClip();
 		clip.open(audioStream);
